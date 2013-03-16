@@ -5,7 +5,7 @@ gem 'journey',   :git => 'git://github.com/rails/journey.git', :branch => '1-0-s
 gem 'arel',      :git => 'git://github.com/rails/arel.git', :branch => '3-0-stable'
 
 gem 'sqlite3'
-
+gem 'nokogiri'
 
 # Gems used only for assets and not required
 # in production environments by default.
