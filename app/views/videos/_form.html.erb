@@ -29,23 +29,23 @@
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :rows => 3 %>
   </div>
   <div class="field">
     <%= f.label :netflix_url %><br />
-    <%= f.text_area :netflix_url %>
+    <%= f.text_area :netflix_url, :rows => 3 %>
   </div>
   <div class="field">
     <%= f.label :actors %><br />
-    <%= f.text_area :actors, :value => @video.actors.collect { |value| value.name }.join(', ') %>
+    <%= f.text_area :actors, :value => @video.actors.collect { |value| value.name }.join(', '), :rows => 3 %>
   </div>
   <div class="field">
     <%= f.label :genres %><br />
-    <%= f.text_area :genres, :value => @video.genres.collect { |value| value.name }.join(', ') %>
+    <%= f.text_area :genres, :value => @video.genres.collect { |value| value.name }.join(', '), :rows => 3 %>
   </div>
   <div class="field">
     <%= f.label :directors %><br />
-    <%= f.text_area :directors, :value => @video.directors.collect { |value| value.name }.join(', ') %>
+    <%= f.text_area :directors, :value => @video.directors.collect { |value| value.name }.join(', '), :rows => 1 %>
   </div>
   <div class="actions">
     <%= f.submit %>
