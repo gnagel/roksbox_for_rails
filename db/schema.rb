@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316194536) do
+ActiveRecord::Schema.define(:version => 20130316234552) do
 
   create_table "actors", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,19 @@ ActiveRecord::Schema.define(:version => 20130316194536) do
   end
 
   add_index "actors_videos", ["video_id", "actor_id"], :name => "index_actors_videos_on_video_id_and_actor_id", :unique => true
+
+  create_table "directors", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "directors_videos", :id => false, :force => true do |t|
+    t.integer "video_id"
+    t.integer "director_id"
+  end
+
+  add_index "directors_videos", ["video_id", "director_id"], :name => "index_directors_videos_on_video_id_and_director_id", :unique => true
 
   create_table "genres", :force => true do |t|
     t.string   "name"
@@ -45,6 +58,8 @@ ActiveRecord::Schema.define(:version => 20130316194536) do
     t.integer  "length"
     t.string   "mpaa"
     t.text     "description"
+    t.text     "file_name"
+    t.text     "netflix_url"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

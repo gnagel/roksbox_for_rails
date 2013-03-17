@@ -1,4 +1,7 @@
 RoksboxForRails::Application.routes.draw do
+  resources :directors
+
+
   resources :videos
 
 

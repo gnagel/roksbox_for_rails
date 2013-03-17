@@ -31,6 +31,22 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  <div class="field">
+    <%= f.label :netflix_url %><br />
+    <%= f.text_area :netflix_url %>
+  </div>
+  <div class="field">
+    <%= f.label :actors %><br />
+    <%= f.text_area :actors, :value => @video.actors.collect { |value| value.name }.join(', ') %>
+  </div>
+  <div class="field">
+    <%= f.label :genres %><br />
+    <%= f.text_area :genres, :value => @video.genres.collect { |value| value.name }.join(', ') %>
+  </div>
+  <div class="field">
+    <%= f.label :directors %><br />
+    <%= f.text_area :directors, :value => @video.directors.collect { |value| value.name }.join(', ') %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

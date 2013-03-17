@@ -21,10 +21,33 @@
 </p>
 
 <p>
+  <b>Genres:</b>
+  <% @video.genres.each do |genre| %>
+	  <%= link_to genre.name, :controller => "genres", :action => "show", :id => genre.id %>
+  <% end %>
+</p>
+
+<p>
+  <b>Actors:</b>
+  <% @video.actors.each do |actor| %>
+	  <%= link_to actor.name, :controller => "actors", :action => "show", :id => actor.id %>
+  <% end %>
+</p>
+
+<p>
   <b>Description:</b>
   <%= @video.description %>
 </p>
 
+<p>
+  <b>File Name:</b>
+  <%= @video.file_name %>
+</p>
+
+<p>
+	<b>Cover Art:</b>
+	<img src="/tmp/video-<%= @video.id %>.jpg" width="200px" height="200px" />
+</p>
 
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Back', videos_path %>

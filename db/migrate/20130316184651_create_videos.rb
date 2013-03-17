@@ -6,6 +6,8 @@ class CreateVideos < ActiveRecord::Migration
       t.integer :length
       t.string :mpaa
       t.text :description
+      t.text :file_name
+      t.text :netflix_url
 
       t.timestamps
     end

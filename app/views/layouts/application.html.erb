@@ -1,14 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RoksboxForRails</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+<title>Roksbox For Rails</title>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+
+<style type="text/css" title="currentStyle" href="http://www.datatables.net/release-datatables/media/css/demo_page.css"></style>
+<style type="text/css" title="currentStyle" href="http://www.datatables.net/media/css/header.ccss"></style>
+<style type="text/css" title="currentStyle" href="http://www.datatables.net/release-datatables/media/css/demo_table.css"></style>
+<style type="text/css" title="currentStyle" href="http://www.datatables.net/release-datatables/examples/examples_support/syntax/css/shCore.css"></style>
+
+<%= javascript_include_tag "application" %>
+
+<script type="text/javascript" language="javascript" src="http://www.datatables.net/release-datatables/media/js/jquery.dataTables.js"></script>
+
+<%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div class="navbar">
+<div class="navbar-inner">
+<div class="container">
+<a class="brand" href="/">Roksbox For Rails</a>
+<ul class="nav">
+<li class="active"><a href="/">Home</a></li>
+<li><a href="/videos">Videos</a></li>
+<li><a href="/actors">Actors</a></li>
+<li><a href="/genres">Genres</a></li>
+<li><a href="/about">About</a></li>
+</ul>
+<ul class="nav pull-right">
+<li><a href="/sign_in">Sing In</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span12">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

@@ -2,7 +2,7 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    @videos = Video.order("title asc, year asc").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -35,6 +35,10 @@ class VideosController < ApplicationController
   # GET /videos/1/edit
   def edit
     @video = Video.find(params[:id])
+    if @video.genres.empty?
+      @video.genres = [Genre.find_by_name('All Genres')]
+      @video.save
+    end
   end
 
   # POST /videos
@@ -58,14 +62,15 @@ class VideosController < ApplicationController
   def update
     @video = Video.find(params[:id])
 
+    @video.actors    = (params[:video].delete(:actors) || '').split(', ').collect { |name| name.strip!; Actor.find_or_create_by_name(:name => name) }
+    @video.genres    = (params[:video].delete(:genres) || '').split(', ').collect { |name| name.strip!; Genre.find_or_create_by_name(:name => name) }
+    @video.directors = (params[:video].delete(:directors) || '').split(', ').collect { |name| name.strip!; Director.find_or_create_by_name(:name => name) }
+    @video.update_attributes(params[:video])
+    @video.save
+
     respond_to do |format|
-      if @video.update_attributes(params[:video])
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to @video, notice: 'Video was successfully updated.' }
+      format.json { head :no_content }
     end
   end
 

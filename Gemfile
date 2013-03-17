@@ -6,6 +6,7 @@ gem 'arel',      :git => 'git://github.com/rails/arel.git', :branch => '3-0-stab
 
 gem 'sqlite3'
 gem 'nokogiri'
+gem 'activesupport'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,3 +36,12 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+
+# Twitter Bootstrap ...
+gem 'therubyracer'  # If using Ruby
+# gem 'therubyrhino'  # If using JRuby
+gem 'jquery-rails'  # If using Bootstrap's JS plugins.
+gem 'less-rails-bootstrap'
+
+gem 'jquery-datatables-rails'

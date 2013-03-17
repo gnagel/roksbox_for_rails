@@ -1,31 +1,49 @@
 <h1>Listing videos</h1>
 
-<table>
+<table id="videos" class="bordered-table zebra-striped display table table-striped">
+	<thead>
   <tr>
+	<th>Cover Art</th>
     <th>Title</th>
     <th>Year</th>
     <th>Length</th>
     <th>Mpaa</th>
-    <th>Description</th>
+    <th>Genres</th>
+    <th>Actors</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
+</thead>
 
+<tbody>
 <% @videos.each do |video| %>
   <tr>
+  	<td><img src="/tmp/video-<%= video.id %>.jpg" width="50px" height="50px" /></td>
     <td><%= video.title %></td>
     <td><%= video.year %></td>
     <td><%= video.length %></td>
     <td><%= video.mpaa %></td>
-    <td><%= video.description %></td>
+    <td><% video.genres.each do |genre| %><%= genre.name %><br><% end %></td>
+    <td><% video.actors.each do |actor| %><%= actor.name %><br><% end %></td>
     <td><%= link_to 'Show', video %></td>
     <td><%= link_to 'Edit', edit_video_path(video) %></td>
     <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
 
 <%= link_to 'New Video', new_video_path %>
+
+<script type="text/javascript">
+// For fluid containers
+$(document).ready(function() {
+	$('#videos').dataTable({
+	  "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
+	  "sPaginationType": "bootstrap"
+	});
+})
+</script>
